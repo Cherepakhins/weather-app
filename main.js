@@ -38,9 +38,12 @@ form.onsubmit = function (e) {
          // Проверка на ошибку 
          if(data.cod === "404"){
             removeCard()
+            //Очищаем поле ввода и возвращаем на него фокус
+            input.value = '';
+            input.focus();
             // Отобразить карточку с ошибкой
             const html = `
-                <div class="card card--active">Город не найден</div>`
+                <div class="card-weather card--active">Город не найден</div>`
                 main.insertAdjacentHTML('afterbegin', html);           
         } else{
         removeCard()
