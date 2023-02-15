@@ -143,7 +143,6 @@ body{
     align-items: center;
     background: var(--dark-bg);
     padding: 40px 15px 50px;
-    margin-bottom: 10px;
 }
 .title{
     color: var(--header-text);
@@ -187,6 +186,7 @@ body{
     background: rgb(104, 60, 104);
 }
 .main{
+    padding: 40px 0;
     display: flex;
     justify-content: center;
     background-color: var(--page-bg);

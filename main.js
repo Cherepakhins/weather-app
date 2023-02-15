@@ -13,9 +13,15 @@ const main = document.querySelector('.main');
 // Объявляем настоящее дату и время
 const today = new Date();
 const day = today.toLocaleDateString();
-const time = today.toLocaleTimeString ()
-const now = day + " " + time;
 const hours = today.getHours();
+const minutes = today.getMinutes();
+let time;
+if(minutes<10){
+    time = hours + ":0" + minutes;
+} else{
+    time = hours + ":" + minutes;
+}
+
 
 function removeCard () {
     const prevCard = document.querySelector('.card-weather');
@@ -68,7 +74,6 @@ form.onsubmit = function (e) {
                 <div class="card__description">${wDescription}</div>
             </div>`;
         main.insertAdjacentHTML('afterbegin', html);
-        console.log(data)
         //Очищаем поле ввода и возвращаем на него фокус
         input.value = '';
         input.focus();
@@ -95,9 +100,9 @@ const urlNasa = `https://api.nasa.gov/planetary/apod?api_key=${apiKeyNasa}`;
         return response.json()
      }).then((data) => {
         {
-            console.log(data);
         // Разметка для карточки
         const html = `
+        <div>
             <div class="card-nasa">
                 <div class="card-nasa-wrapper">
                     <h2 class="card__title card__title-nasa">${data.title}</h2>
@@ -105,7 +110,7 @@ const urlNasa = `https://api.nasa.gov/planetary/apod?api_key=${apiKeyNasa}`;
                     <img src="${data.url}" alt="space" class="img-space">
                 </div>
                 
-            </div>`;
+            </div>
+        </div>`;
         main.insertAdjacentHTML('beforeend', html);
     }});
-
